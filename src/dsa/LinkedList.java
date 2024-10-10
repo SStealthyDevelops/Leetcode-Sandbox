@@ -64,11 +64,13 @@ public class LinkedList<T> {
      */
     public T removeLast() {
         Node current = head;
-        while (current.getNext() != null) {
+        while (current != null) {
             if (current.getNext() == tail) {
+                T data = current.data;
                 tail = current;
+                tail.setNext(null);
                 size--;
-                return tail.data;
+                return data;
             }
             current = current.getNext();
         }
@@ -83,6 +85,29 @@ public class LinkedList<T> {
         T data = head.data;
         head = head.getNext();
         size--;
+        return data;
+    }
+
+    /**
+     *  O(n)
+     * @param index Index to remove item from
+     * @return The data that was removed
+     */
+    public T remove(int index) {
+        if (index < 0 || index >= size) {
+            return null;
+        }
+        Node current = head;
+        Node prev = null;
+        for (int i = 0; i < index; i++) {
+            prev = current;
+            current = current.getNext();
+        }
+        assert prev != null;
+        prev.setNext(current.getNext());
+        size--;
+        T data = current.data;
+        current = null;
         return data;
     }
 
@@ -123,6 +148,11 @@ public class LinkedList<T> {
         return current.data;
     }
 
+    /**
+     * O(n)
+     * @param data Data (pointer) to search for
+     * @return int Index of the data
+     */
     public int indexOf(T data) {
         Node current = head;
         int index = 0;
@@ -135,6 +165,7 @@ public class LinkedList<T> {
         }
         return -1;
     }
+
 
 
 
