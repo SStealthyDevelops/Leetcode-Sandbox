@@ -1,6 +1,7 @@
-package problem;
+package problem.tests;
 
 import dsa.LinkedList;
+import problem.Problem;
 
 public class LinkedListTest implements Problem {
     @Override

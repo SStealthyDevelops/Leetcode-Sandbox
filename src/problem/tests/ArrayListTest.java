@@ -1,6 +1,7 @@
-package problem;
+package problem.tests;
 
 import dsa.ArrayList;
+import problem.Problem;
 
 public class ArrayListTest implements Problem {
 

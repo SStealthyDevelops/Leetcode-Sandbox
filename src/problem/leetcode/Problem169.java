@@ -1,4 +1,6 @@
-package problem;
+package problem.leetcode;
+
+import problem.Problem;
 
 public class Problem169 implements Problem {
 
