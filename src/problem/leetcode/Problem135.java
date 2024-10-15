@@ -88,7 +88,45 @@ public class Problem135 implements Problem {
         return totalCandies;
     }
 
+    // Works for all test cases -- Not my solution :*(
+    public int candy3(int[] ratings) {
+        assert ratings.length > 0;
+        int n = ratings.length;
 
+        int totalCandies = n;
+
+        if (n == 1) return 1;
+
+        int i = 1;
+
+        while (i < n) {
+            if (ratings[i] == ratings[i - 1]) {
+                i++;
+                continue;
+            }
+
+            int posDelta = 0;
+            while (i < n && ratings[i] > ratings[i - 1]) {
+                posDelta++;
+                totalCandies += posDelta;
+                i++;
+            }
+
+            if (i == n) return totalCandies;
+
+            int negDelta = 0;
+            while (i < n && ratings[i] < ratings[i - 1]) {
+                negDelta++;
+                totalCandies += negDelta;
+                i++;
+            }
+
+            totalCandies -= Math.min(posDelta, negDelta);
+
+        }
+
+        return totalCandies;
+    }
 
 
     @Override
